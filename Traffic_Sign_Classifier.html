@@ -12615,9 +12615,6 @@ sets imply underfitting. A high accuracy on the training set but low accuracy on
 
 <span class="c1"># using adam optimizer</span>
 <span class="n">optimizer</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">train</span><span class="o">.</span><span class="n">AdamOptimizer</span><span class="p">(</span><span class="n">learning_rate</span><span class="o">=</span><span class="n">lr</span><span class="p">)</span><span class="o">.</span><span class="n">minimize</span><span class="p">(</span><span class="n">cost</span><span class="p">)</span>
-
-<span class="c1"># Add ops to save and restore all the variables.</span>
-<span class="n">saver</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">train</span><span class="o">.</span><span class="n">Saver</span><span class="p">()</span>
 </pre></div>
 
 </div>
