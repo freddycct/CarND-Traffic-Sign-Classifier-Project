@@ -17,14 +17,18 @@ The goals / steps of this project are the following:
 
 [//]: # (Image References)
 
-[image1]: ./examples/visualization.jpg "Visualization"
-[image2]: ./examples/grayscale.jpg "Grayscaling"
-[image3]: ./examples/random_noise.jpg "Random Noise"
-[image4]: ./examples/placeholder.png "Traffic Sign 1"
-[image5]: ./examples/placeholder.png "Traffic Sign 2"
-[image6]: ./examples/placeholder.png "Traffic Sign 3"
-[image7]: ./examples/placeholder.png "Traffic Sign 4"
-[image8]: ./examples/placeholder.png "Traffic Sign 5"
+[image1a]: ./images/train_distribution.png "Training Set Class Distribution"
+[image1b]: ./images/validation_distribution.png "Validation Set Class Distribution"
+[image1c]: ./images/test_distribution.png "Testing Set Class Distribution"
+[image2a]: ./images/with_color.png "With Color"
+[image2b]: ./images/gray_scale.png "Grayscaling"
+[image2c]: ./images/equalize_histogram.png "Histogram Equalization"
+[image3]: ./images/augmentation.png "Random Noise"
+[image4]: ./images/1.png "Traffic Sign 1"
+[image5]: ./images/2.png "Traffic Sign 2"
+[image6]: ./images/3.png "Traffic Sign 3"
+[image7]: ./images/4.png "Traffic Sign 4"
+[image8]: ./images/5.png "Traffic Sign 5"
 
 ## Rubric Points
 ### Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/481/view) individually and describe how I addressed each point in my implementation.  
@@ -44,16 +48,18 @@ I used the pandas library to calculate summary statistics of the traffic
 signs data set:
 
 * The size of training set is 34799
-* The size of the validation set is ?
+* The size of the validation set is 4410
 * The size of test set is 12630
 * The shape of a traffic sign image is 32 x 32 x 3
 * The number of unique classes/labels in the data set is 43
 
 #### 2. Include an exploratory visualization of the dataset.
 
-Here is an exploratory visualization of the data set. It is a bar chart showing how the data is distributed across the train, validation and test data sets. It is important to make sure that the distribution of labels in validation and test sets are almost similar.
+Here is an exploratory visualization of the data set. It is a bar chart showing how the labels are distributed across the train, validation and test data sets. It is important to make sure that the distribution of labels in validation and test sets are almost similar.
 
-![alt text][image1]
+![alt text][image1a]
+![alt text][image1b]
+![alt text][image1c]
 
 I also randomly chose some images and visualize how it would look like after converting the images to grayscale. Some images are darker, so I apply histogram equalization in order to increase the contrast of the patterns in the images.
 
@@ -63,11 +69,13 @@ I also randomly chose some images and visualize how it would look like after con
 
 As a first step, I decided to convert the images to grayscale because most traffic signs can be identified without using the color information. It is also faster to train because reducing the images to grayscale reduces the amount of numerical values by 3 times.
 
-Here is an example of a traffic sign image before and after grayscaling.
+Here is an example of a traffic sign image before and after grayscaling, follow by histogram equalization
 
-![alt text][image2]
+![alt text][image2a]
+![alt text][image2b]
+![alt text][image2b]
 
-As a last step, I normalized the image data because ...
+As a last step, I normalized the image data because the deep neural network converge faster with more numerical stability if the range of values are consistent across the training examples.
 
 I decided to generate additional data because I am not getting a higher test accuracy.
 
@@ -76,8 +84,6 @@ To add more data to the the data set, I rotate each image slightly, the random r
 Here is an example of an original image and an augmented image:
 
 ![alt text][image3]
-
-The difference between the original data set and the augmented data set is the following ... 
 
 
 #### 2. Describe what your final model architecture looks like including model type, layers, layer sizes, connectivity, etc.) Consider including a diagram and/or table describing the final model.
@@ -116,21 +122,22 @@ To train the model, I used Adam Optimizer, with learning rate of 0.001 for 200 e
 #### 4. Describe the approach taken for finding a solution and getting the validation set accuracy to be at least 0.93. Include in the discussion the results on the training, validation and test sets and where in the code these were calculated. Your approach may have been an iterative process, in which case, outline the steps you took to get to the final solution and why you chose those steps. Perhaps your solution involved an already well known implementation or architecture. In this case, discuss why you think the architecture is suitable for the current problem.
 
 My final model results were:
-* training set accuracy of ?
-* validation set accuracy of ? 
-* test set accuracy of ?
+* training set accuracy of 1.0
+* validation set accuracy of 0.979 
+* test set accuracy of 0.953
 
 If an iterative approach was chosen:
-* What was the first architecture that was tried and why was it chosen?
-* What were some problems with the initial architecture?
-* How was the architecture adjusted and why was it adjusted? Typical adjustments could include choosing a different model architecture, adding or taking away layers (pooling, dropout, convolution, etc), using an activation function or changing the activation function. One common justification for adjusting an architecture would be due to overfitting or underfitting. A high accuracy on the training set but low accuracy on the validation set indicates over fitting; a low accuracy on both sets indicates under fitting.
-* Which parameters were tuned? How were they adjusted and why?
+* What was the first architecture that was tried and why was it chosen? **I started with LeNet and I chose it because it was simple to train.**
+* What were some problems with the initial architecture? **Probably overfitted to the training set.**
+* How was the architecture adjusted and why was it adjusted? Typical adjustments could include choosing a different model architecture, adding or taking away layers (pooling, dropout, convolution, etc), using an activation function or changing the activation function. One common justification for adjusting an architecture would be due to overfitting or underfitting. A high accuracy on the training set but low accuracy on the validation set indicates over fitting; a low accuracy on both sets indicates under fitting. **Added dropout layers**
+* Which parameters were tuned? How were they adjusted and why? **I tried various kernel sizes and changing number of filters, but did not improve my results significantly.**
 * What are some of the important design choices and why were they chosen? For example, why might a convolution layer work well with this problem? How might a dropout layer help with creating a successful model?
+**Convolution layer helps to detect the edges within the traffic signs. Dropout helps to generalize the model by making the network smaller because when outputs are randomly chosen to be 0, the architecture becomes simpler.**
 
 If a well known architecture was chosen:
-* What architecture was chosen?
-* Why did you believe it would be relevant to the traffic sign application?
-* How does the final model's accuracy on the training, validation and test set provide evidence that the model is working well?
+* What architecture was chosen? **I tried Inception Model**
+* Why did you believe it would be relevant to the traffic sign application? **Well known model that is able to go deep while using less parameters than other well-known architecture.**
+* How does the final model's accuracy on the training, validation and test set provide evidence that the model is working well? **Training error < Validation error < testing error, with training and validation error decreasing after every epoch.**
  
 
 ### Test a Model on New Images
