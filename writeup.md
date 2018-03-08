@@ -182,6 +182,7 @@ For the first image, the model is relatively sure that this is a general caution
 | 0.00024 | Pedestrians |
 
 For the second image
+
 | Probability         	|     Prediction	        					| 
 |:---------------------:|:---------------------------------------------:| 
 | 0.991 | Children crossing |
@@ -191,6 +192,7 @@ For the second image
 | 0.000135 | Road narrows on the right |
 
 For the third image
+
 | Probability         	|     Prediction	        					| 
 |:---------------------:|:---------------------------------------------:| 
 | 0.996 | Bicycles crossing |
@@ -200,6 +202,7 @@ For the third image
 | 0.000312 | Road work |
 
 For the fourth image
+
 | Probability         	|     Prediction	        					| 
 |:---------------------:|:---------------------------------------------:| 
 | 1 | Road work |
@@ -209,6 +212,7 @@ For the fourth image
 | 8.38e-06 | Dangerous curve to the right |
 
 For the fifth image
+
 | Probability         	|     Prediction	        					| 
 |:---------------------:|:---------------------------------------------:| 
 | 0.93 | Stop |
@@ -219,4 +223,6 @@ For the fifth image
 
 ### (Optional) Visualizing the Neural Network (See Step 4 of the Ipython notebook for more details)
 #### 1. Discuss the visual output of your trained network's feature maps. What characteristics did the neural network use to make classifications?
+
+The edges and the contrast in the signs.
 
