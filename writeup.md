@@ -85,6 +85,8 @@ Here is an example of an original image and an augmented image:
 
 ![alt text][image3]
 
+However, the augmented images did not show any significant improvements for my results.
+
 
 #### 2. Describe what your final model architecture looks like including model type, layers, layer sizes, connectivity, etc.) Consider including a diagram and/or table describing the final model.
 
@@ -149,7 +151,7 @@ Here are five German traffic signs that I found on the web:
 ![alt text][image4] ![alt text][image5] ![alt text][image6] 
 ![alt text][image7] ![alt text][image8]
 
-The first image might be difficult to classify because ...
+The last image might be difficult to classify because relatively similar images are not in the training set.
 
 #### 2. Discuss the model's predictions on these new traffic signs and compare the results to predicting on the test set. At a minimum, discuss what the predictions were, the accuracy on these new predictions, and compare the accuracy to the accuracy on the test set (OPTIONAL: Discuss the results in more detail as described in the "Stand Out Suggestions" part of the rubric).
 
@@ -157,33 +159,64 @@ Here are the results of the prediction:
 
 | Image			        |     Prediction	        					| 
 |:---------------------:|:---------------------------------------------:| 
-| Stop Sign      		| Stop sign   									| 
-| U-turn     			| U-turn 										|
-| Yield					| Yield											|
-| 100 km/h	      		| Bumpy Road					 				|
-| Slippery Road			| Slippery Road      							|
+| General caution      		| General caution   									| 
+| Children crossing     			| Children crossing								|
+| Bicycles crossing					| Bicycles crossing											|
+| Road work	      		| Road work	 					 				|
+| Speed limit (80km/h)		| Stop     							|
 
-
-The model was able to correctly guess 4 of the 5 traffic signs, which gives an accuracy of 80%. This compares favorably to the accuracy on the test set of ...
+The model was able to correctly guess 4 of the 5 traffic signs, which gives an accuracy of 80%. 
 
 #### 3. Describe how certain the model is when predicting on each of the five new images by looking at the softmax probabilities for each prediction. Provide the top 5 softmax probabilities for each image along with the sign type of each probability. (OPTIONAL: as described in the "Stand Out Suggestions" part of the rubric, visualizations can also be provided such as bar charts)
 
-The code for making predictions on my final model is located in the 11th cell of the Ipython notebook.
+The code for making predictions on my final model is located in the 49-50th cell of the Ipython notebook.
 
-For the first image, the model is relatively sure that this is a stop sign (probability of 0.6), and the image does contain a stop sign. The top five soft max probabilities were
+For the first image, the model is relatively sure that this is a general caution (probability of 0.998), and the image does contain a general caution. The top five soft max probabilities were
 
 | Probability         	|     Prediction	        					| 
 |:---------------------:|:---------------------------------------------:| 
-| .60         			| Stop sign   									| 
-| .20     				| U-turn 										|
-| .05					| Yield											|
-| .04	      			| Bumpy Road					 				|
-| .01				    | Slippery Road      							|
+| 0.998 | General caution |
+| 0.00143 | Traffic signals |
+| 0.000414 | Speed limit (70km/h) |
+| 0.000247 | Road narrows on the right |
+| 0.00024 | Pedestrians |
 
+For the second image
+| Probability         	|     Prediction	        					| 
+|:---------------------:|:---------------------------------------------:| 
+| 0.991 | Children crossing |
+| 0.00489 | Beware of ice/snow |
+| 0.00236 | Bicycles crossing |
+| 0.00151 | Slippery road |
+| 0.000135 | Road narrows on the right |
 
-For the second image ... 
+For the third image
+| Probability         	|     Prediction	        					| 
+|:---------------------:|:---------------------------------------------:| 
+| 0.996 | Bicycles crossing |
+| 0.0015 | Children crossing |
+| 0.000876 | Road narrows on the right |
+| 0.000608 | Speed limit (60km/h) |
+| 0.000312 | Road work |
+
+For the fourth image
+| Probability         	|     Prediction	        					| 
+|:---------------------:|:---------------------------------------------:| 
+| 1 | Road work |
+| 7.04e-05 | Speed limit (60km/h) |
+| 1.88e-05 | Road narrows on the right |
+| 1.07e-05 | Ahead only |
+| 8.38e-06 | Dangerous curve to the right |
+
+For the fifth image
+| Probability         	|     Prediction	        					| 
+|:---------------------:|:---------------------------------------------:| 
+| 0.93 | Stop |
+| 0.0318 | Keep right |
+| 0.026 | Speed limit (60km/h) |
+| 0.0111 | Speed limit (120km/h) |
+| 0.000381 | No vehicles |
 
 ### (Optional) Visualizing the Neural Network (See Step 4 of the Ipython notebook for more details)
 #### 1. Discuss the visual output of your trained network's feature maps. What characteristics did the neural network use to make classifications?
-
 
